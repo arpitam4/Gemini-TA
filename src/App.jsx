@@ -1,19 +1,29 @@
-import React from 'react';
-import './App.css';
-import ChatComponent from './components/chatcomponent';
-function App() {
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-  console.log(apiKey); 
+import React, { useContext } from "react";
+import Sidebar from "./components/Sidebar";
+import Chat from "./components/Chat";
+import { Context } from "./context/Context";
+import "./App.css";
+
+const App = () => {
+  const { chats, selectedChat, setSelectedChat, createNewChat, deleteChat } = useContext(Context);
+
+  const handleNewChat = () => {
+    // Create a new chat with empty link
+    createNewChat("");
+  };
 
   return (
-    <>
-
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <ChatComponent />
-    </>
+    <div className="app">
+      <Sidebar 
+        chats={chats} 
+        onNewChat={handleNewChat} 
+        onSelectChat={setSelectedChat}
+        selectedChat={selectedChat}
+        onDeleteChat={deleteChat}
+      />
+      <Chat />
+    </div>
   );
-}
+};
 
 export default App;
