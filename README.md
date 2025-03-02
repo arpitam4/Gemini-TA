@@ -17,7 +17,12 @@ This project is built using **Vite + React (frontend), Node.js (backend), and th
 ---
 
 ## 🎥 Demo Video & Features
-[**📹 Watch Demo Here**](#) *(Add video link)*
+
+### 🔹 DEMO:
+
+https://github.com/user-attachments/assets/9828ca72-0f71-4a47-af96-e3fbd15f3e7d
+
+
 
 ### 🔹 Key Features:
 ✔️ **Chat-based interface** for asking doubts about LeetCode problems.
