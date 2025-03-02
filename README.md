@@ -12,7 +12,7 @@ This project is built using **Vite + React (frontend), Node.js (backend), and th
 - [⚙️ Setup Instructions](#%EF%B8%8F-setup-instructions)
 - [🛠️ Architecture Overview](#%EF%B8%8F-architecture-overview)
 - [🚀 How to Use](#-how-to-use)
-- [🤖 GPT Integration Details](#-gpt-integration-details)
+- [🤖 Gemini Integration Details](#-gemini-integration-details)
 
 ---
 
