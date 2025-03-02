@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// Replace with your actual API key (Store this securely in ENV in production)
+// Replace with your actual API key (Store securely in ENV in production)
 const apiKey = "AIzaSyBM-q27oVg4PedNt3msesXKatUXg1WTeMw";
 
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -13,12 +13,17 @@ const generationConfig = {
   responseMimeType: "text/plain",
 };
 
-export async function run(leetcodeLink, userQuery) {
+// Store chat sessions for maintaining context
+const chatSessions = {};
+
+export async function run(leetcodeLink, userQuery, chatId) {
   try {
-    const chatSession = model.startChat({ generationConfig, history: [] });
-    
-    // Construct a prompt that guides the AI to provide hints without solutions
-    const prompt = `
+    if (!chatSessions[chatId]) {
+      // New chat: Create a fresh session
+      chatSessions[chatId] = model.startChat({ generationConfig, history: [] });
+
+      // Detailed prompt for the first message
+      const firstPrompt = `
 I'm working on this LeetCode problem: ${leetcodeLink}
 
 My specific question is: ${userQuery}
@@ -32,8 +37,17 @@ Please help me understand the approach to solve this problem by:
 IMPORTANT: Do NOT provide the complete solution or working code that solves the problem directly. I want to learn how to solve it myself.
 `;
 
-    const result = await chatSession.sendMessage(prompt);
-    return result.response.text();
+      const result = await chatSessions[chatId].sendMessage(firstPrompt);
+      return result.response.text();
+    } else {
+      // Subsequent messages: Only send userQuery
+      const Prompt = `
+${userQuery}
+IMPORTANT: Do NOT provide the complete solution or working code or any code at all that solves the problem directly. I want to learn how to solve it myself. if i ask for code tell me the approach to solving this problem with edge cases.
+`
+      const result = await chatSessions[chatId].sendMessage(Prompt);
+      return result.response.text();
+    }
   } catch (error) {
     console.error("Gemini API Error:", error);
     return "Error fetching response from AI";
