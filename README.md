@@ -1,12 +1,116 @@
-# React + Vite
+# Gemini-TA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+Gemini-TA is a Teaching Assistant chatbot designed to help users understand **Data Structures & Algorithms (DSA) problems** from LeetCode. It provides **hints, thought processes, and optimization techniques** without giving direct solutions, encouraging problem-solving skills.
 
-Currently, two official plugins are available:
+This project is built using **Vite + React (frontend), Node.js (backend), and the Google Gemini API** for AI-powered responses.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 📑 Table of Contents
+- [🎥 Demo Video & Features](#-demo-video--features)
+- [⚙️ Setup Instructions](#%EF%B8%8F-setup-instructions)
+- [🛠️ Architecture Overview](#%EF%B8%8F-architecture-overview)
+- [🚀 How to Use](#-how-to-use)
+- [🤖 GPT Integration Details](#-gpt-integration-details)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎥 Demo Video & Features
+[**📹 Watch Demo Here**](#) *(Add video link)*
+
+### 🔹 Key Features:
+✔️ **Chat-based interface** for asking doubts about LeetCode problems.
+✔️ **Saves chat history** per LeetCode problem.
+✔️ **Locks problem link** after first message in a chat.
+✔️ **Formats AI responses** (bold, italic for better readability).
+✔️ **Provides hints & thought process**, not direct solutions.
+✔️ **Fast & lightweight** using Vite & React.
+
+---
+
+## ⚙️ Setup Instructions
+
+### Prerequisites
+- **Node.js** (v16+ recommended)
+- **npm** or **yarn** installed
+- A **Google Gemini API key**
+
+### 🔧 Installation Steps
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/Gemini-TA.git
+   cd Gemini-TA
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Create an **.env** file and add your **Google Gemini API key**:
+   ```env
+   VITE_GEMINI_API_KEY=your_api_key_here
+   ```
+4. Start the application:
+   ```sh
+   npm run dev
+   ```
+
+Your app will be running at `http://localhost:5173` 🚀
+
+---
+
+## 🛠️ Architecture Overview
+### **Tech Stack:**
+- **Frontend:** Vite + React
+- **Backend:** Node.js
+- **AI Integration:** Google Gemini API
+- **State Management:** React Context API
+
+### **Component Breakdown:**
+1. **Sidebar** → Handles chat selection and creation.
+2. **Chat Interface** → Displays messages and input fields.
+3. **API Handler** → Communicates with Gemini API.
+
+**Data Flow:**
+1. **User enters LeetCode link + query.**
+2. **AI processes query** and provides hints.
+3. **Messages are stored per chat.**
+
+---
+
+## 🚀 How to Use
+1. **Start a new chat** by clicking **+ New Chat**.
+2. **Enter a LeetCode problem link** and your query.
+3. **Receive AI hints & suggestions** to approach the problem.
+4. **Ask follow-up questions** (without re-entering the link).
+5. **Revisit old chats** for reference.
+
+🔹 *Note:* Once a LeetCode problem is entered, the link **locks** for that chat.
+
+---
+
+## 🤖 GPT Integration Details
+We use **Google Gemini API** to process user queries. The API:
+- **Understands DSA concepts** and problem-solving approaches.
+- **Generates hints, key concepts, and thought processes.**
+- **Formats responses** (bold & italics) for clarity.
+- **Maintains chat history** to give contextual answers.
+
+### 🔹 API Request Flow:
+1. **First Query:** Sends problem link + structured hints request.
+2. **Follow-up Messages:** Sends only the user’s new question.
+3. **AI Response Processing:** Formats markdown to **bold/italic text.**
+
+---
+
+### 🎯 Future Improvements:
+- 🔹 Improve UI/UX with animations.
+- 🔹 Add **more AI-powered interactivity**.
+- 🔹 Optimize API responses **for better context retention.**
+
+📌 **Contributions & Feedback Welcome!**
+
+---
+
+💡 **Built with ❤️ by [Your Name]**
+
