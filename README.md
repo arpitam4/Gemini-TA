@@ -21,10 +21,15 @@ This project is built using **Vite + React (frontend), Node.js (backend), and th
 
 ### 🔹 Key Features:
 ✔️ **Chat-based interface** for asking doubts about LeetCode problems.
+
 ✔️ **Saves chat history** per LeetCode problem.
+
 ✔️ **Locks problem link** after first message in a chat.
+
 ✔️ **Formats AI responses** (bold, italic for better readability).
+
 ✔️ **Provides hints & thought process**, not direct solutions.
+
 ✔️ **Fast & lightweight** using Vite & React.
 
 ---
@@ -89,7 +94,7 @@ Your app will be running at `http://localhost:5173` 🚀
 
 ---
 
-## 🤖 GPT Integration Details
+## 🤖 Gemini Integration Details
 We use **Google Gemini API** to process user queries. The API:
 - **Understands DSA concepts** and problem-solving approaches.
 - **Generates hints, key concepts, and thought processes.**
@@ -101,16 +106,4 @@ We use **Google Gemini API** to process user queries. The API:
 2. **Follow-up Messages:** Sends only the user’s new question.
 3. **AI Response Processing:** Formats markdown to **bold/italic text.**
 
----
-
-### 🎯 Future Improvements:
-- 🔹 Improve UI/UX with animations.
-- 🔹 Add **more AI-powered interactivity**.
-- 🔹 Optimize API responses **for better context retention.**
-
-📌 **Contributions & Feedback Welcome!**
-
----
-
-💡 **Built with ❤️ by [Your Name]**
 
