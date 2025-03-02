@@ -13,7 +13,6 @@ const Chat = () => {
   useEffect(() => {
     if (!selectedChat || !chats || chats.length === 0) {
       setCurrentMessages([]);
-      // Clear link if no chat is selected
       setLink("");
       return;
     }
@@ -21,22 +20,22 @@ const Chat = () => {
     const currentChat = chats.find(chat => chat.id === selectedChat);
     if (currentChat) {
       setCurrentMessages(currentChat.messages || []);
-      
-      // If the chat has a saved problem link, pre-fill the link input
-      // Otherwise, clear the link input
       setLink(currentChat.problemLink || "");
     }
   }, [selectedChat, chats]);
+
+  const formatMessage = (text) => {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Convert **bold** to <strong>bold</strong>
+      .replace(/\*(.*?)\*/g, "<em>$1</em>"); // Convert *italic* to <em>italic</em>
+  };
 
   const handleSend = async () => {
     if (doubt.trim()) {
       setIsLoading(true);
       await onSent(link.trim(), doubt.trim(), selectedChat);
       setIsLoading(false);
-      
-      // Clear input after sending
       setDoubt("");
-      // Don't clear the link so user can ask multiple questions about same problem
     }
   };
 
@@ -80,7 +79,7 @@ const Chat = () => {
                 ) : (
                   <div className="bot-content">
                     <strong>DSA Assistant:</strong>
-                    <div className="bot-text">{msg.text}</div>
+                    <div className="bot-text" dangerouslySetInnerHTML={{ __html: formatMessage(msg.text) }}></div>
                   </div>
                 )}
               </div>
